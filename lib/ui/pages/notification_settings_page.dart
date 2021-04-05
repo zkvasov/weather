@@ -1,11 +1,13 @@
 import 'dart:ui';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:weather_app/notifiers/notification_settings_notifier.dart';
-import 'package:weather_app/utils/date_utils.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:weather_app/localization/app_language.dart';
+import 'package:weather_app/localization/app_localizations.dart';
+import 'package:weather_app/notifiers/notification_settings_notifier.dart';
+import 'package:weather_app/ui/views/padded_elevated_button.dart';
+import 'package:weather_app/utils/date_utils.dart';
 
 final notificationSettingsProvider =
     StateNotifierProvider((ref) => NotificationSettingsNotifier());
@@ -19,9 +21,12 @@ class NotificationSettingsPage extends HookWidget {
       notificationSettingsProvider.state,
     );
 
+    var appLanguage = getAppLanguage(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Notification settings'),
+        title: Text(
+          AppLocalizations.of(context).translate('notification_settings'),
+        ),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () => Navigator.of(context).pop(),
@@ -37,6 +42,9 @@ class NotificationSettingsPage extends HookWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
+                      SizedBox(
+                        height: 20.0,
+                      ),
                       notificationSettingsModel.selectedDateTime == null
                           ? CircularProgressIndicator()
                           : Text(
@@ -50,13 +58,17 @@ class NotificationSettingsPage extends HookWidget {
                         onPressed: () => context
                             .read(notificationSettingsProvider)
                             .selectDate(context),
-                        child: Text('Select date'),
+                        child: Text(
+                          AppLocalizations.of(context)
+                              .translate('select_date_time'),
+                        ),
                       ),
                     ],
                   ),
                 ),
                 PaddedElevatedButton(
-                  buttonText: 'Create notification by selected date and time',
+                  buttonText: AppLocalizations.of(context)
+                      .translate('create_notification'),
                   onPressed: notificationSettingsModel.selectedDateTime == null
                       ? null
                       : () async {
@@ -65,37 +77,33 @@ class NotificationSettingsPage extends HookWidget {
                         },
                 ),
                 PaddedElevatedButton(
-                  buttonText: 'Cancel all notifications',
+                  buttonText: AppLocalizations.of(context)
+                      .translate('cancel_all_notifications'),
                   onPressed: () async {
                     await notificationSettingsModel.cancelAllNotifications();
                   },
                 ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    ElevatedButton(
+                      onPressed: () {
+                        appLanguage.changeLanguage(Locale("en"));
+                      },
+                      child: Text('English'),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        appLanguage.changeLanguage(Locale("ru"));
+                      },
+                      child: Text('Русский'),
+                    )
+                  ],
+                )
               ],
             ),
           ),
         ),
-      ),
-    );
-  }
-}
-
-class PaddedElevatedButton extends StatelessWidget {
-  const PaddedElevatedButton({
-    this.buttonText,
-    this.onPressed,
-    Key key,
-  }) : super(key: key);
-
-  final String buttonText;
-  final VoidCallback onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(0, 0, 0, 8),
-      child: ElevatedButton(
-        onPressed: onPressed,
-        child: Text(buttonText),
       ),
     );
   }

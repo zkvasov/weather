@@ -1,5 +1,4 @@
-
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class ImageTextColumn extends StatelessWidget{
 
@@ -16,6 +15,9 @@ class ImageTextColumn extends StatelessWidget{
         Image.asset(
           imageAssetPath,
           width: (MediaQuery.of(context).size.width - 32) / 4,
+        ),
+        SizedBox(
+          height: 15,
         ),
         Text('$temp °C'),
       ],

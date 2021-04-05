@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:weather_app/utils/date_utils.dart';
 
 class ShortDayDescription extends StatelessWidget {

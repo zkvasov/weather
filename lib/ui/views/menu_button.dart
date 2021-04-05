@@ -1,6 +1,5 @@
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:weather_app/localization/app_localizations.dart';
 import 'package:weather_app/ui/pages/hourly_weather_page.dart';
 import 'package:weather_app/ui/pages/notification_settings_page.dart';
 import 'package:weather_app/constants.dart';
@@ -32,7 +31,9 @@ class MenuButton extends StatelessWidget{
         return Constants.choices.map((String choice) {
           return PopupMenuItem<String>(
             value: choice,
-            child: Text(choice),
+            child: Text(
+              AppLocalizations.of(context).translate(choice),
+            ),
           );
         }).toList();
       },

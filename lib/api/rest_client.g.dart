@@ -24,10 +24,10 @@ class _RestClient implements RestClient {
       units = ApiConstants.units}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
-      r'appid': appId?.toJson(),
-      r'lat': latitude?.toJson(),
-      r'lon': longitude?.toJson(),
-      r'units': units?.toJson()
+      r'appid': appId,
+      r'lat': latitude,
+      r'lon': longitude,
+      r'units': units
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
@@ -52,10 +52,10 @@ class _RestClient implements RestClient {
       units = ApiConstants.units}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
-      r'appid': appId?.toJson(),
-      r'lat': latitude?.toJson(),
-      r'lon': longitude?.toJson(),
-      r'units': units?.toJson()
+      r'appid': appId,
+      r'lat': latitude,
+      r'lon': longitude,
+      r'units': units
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};

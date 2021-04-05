@@ -12,17 +12,17 @@ abstract class RestClient {
 
   @GET("/onecall?exclude=current,minutely,hourly")
   Future<DailyWeather> getDailyWeather({
-    @Query("appid") appId = ApiConstants.appId,
-    @Query("lat") latitude = ApiConstants.lat,
-    @Query("lon") longitude = ApiConstants.lon,
-    @Query("units") units = ApiConstants.units,
+    @Query("appid") String appId = ApiConstants.appId,
+    @Query("lat") double latitude = ApiConstants.lat,
+    @Query("lon") double longitude = ApiConstants.lon,
+    @Query("units") String units = ApiConstants.units,
   });
 
   @GET("/onecall?exclude=current,minutely,daily")
   Future<HourlyWeather> getHourlyWeather({
-    @Query("appid") appId = ApiConstants.appId,
-    @Query("lat") latitude = ApiConstants.lat,
-    @Query("lon") longitude = ApiConstants.lon,
-    @Query("units") units = ApiConstants.units,
+    @Query("appid") String appId = ApiConstants.appId,
+    @Query("lat") double latitude = ApiConstants.lat,
+    @Query("lon") double longitude = ApiConstants.lon,
+    @Query("units") String units = ApiConstants.units,
   });
 }

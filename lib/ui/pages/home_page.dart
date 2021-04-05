@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:weather_app/localization/app_localizations.dart';
 import 'package:weather_app/notifiers/daily_weather_notifier.dart';
 import 'package:weather_app/ui/views/full_day_description.dart';
 import 'package:weather_app/ui/views/load_button.dart';
@@ -11,21 +12,18 @@ final dailyWeatherProvider = StateNotifierProvider(
   (ref) => DailyWeatherNotifier()..loadDataFromHive(),
 );
 
-Widget _buildBody(DailyWeather dailyWeather) {
-  return FullDayDescription(dailyWeather: dailyWeather);
-}
-
 class HomePage extends HookWidget {
   const HomePage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
     final dailyWeather = useProvider(dailyWeatherProvider.state);
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Weather'),
+        title: Text(
+          AppLocalizations.of(context).translate('home_page_name'),
+        ),
         automaticallyImplyLeading: false,
         actions: <Widget>[
           MenuButton(),
@@ -42,5 +40,7 @@ class HomePage extends HookWidget {
     );
   }
 
-
+  Widget _buildBody(DailyWeather dailyWeather) {
+    return FullDayDescription(dailyWeather: dailyWeather);
+  }
 }

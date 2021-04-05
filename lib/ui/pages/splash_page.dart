@@ -16,7 +16,7 @@ class _SplashPageState extends State<SplashPage> {
     Timer(
         Duration(seconds: 3),
             () {
-              Navigator.of(context).push(
+              Navigator.of(context).pushReplacement(
                 MaterialPageRoute(
                   builder: (context) => HomePage(),
                 ),
@@ -34,7 +34,6 @@ class _SplashPageState extends State<SplashPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Image.asset(
-
                 "assets/images/morning.png",
                 width: MediaQuery.of(context).size.width / 4
             ),

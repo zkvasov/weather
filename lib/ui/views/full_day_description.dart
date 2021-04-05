@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:weather_app/localization/app_localizations.dart';
 import 'package:weather_app/models/daily_weather.dart';
 import 'package:weather_app/ui/views/image_text_column.dart';
 import 'package:weather_app/ui/views/short_day_description.dart';
@@ -53,17 +53,40 @@ class FullDayDescription extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(top: 10, bottom: 10),
-                    child: Column(
-                      textDirection: TextDirection.ltr,
-                      children: <Widget>[
-                        Text('pressure: ${currentWeather.pressure} mmHg'),
-                        Text('clouds: ${currentWeather.clouds} %'),
-                        Text('wind speed: ${currentWeather.wind_speed} m/s'),
-                        Text('humidity: ${currentWeather.humidity} %'),
-                      ],
-                    ),
+                  Column(
+                    textDirection: TextDirection.ltr,
+                    children: <Widget>[
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                          '${AppLocalizations.of(context).translate('pressure')}'
+                              ': ${currentWeather.pressure}'
+                              ' ${AppLocalizations.of(context).translate('mm_hg')}'
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                          '${AppLocalizations.of(context).translate('clouds')}'
+                              ': ${currentWeather.clouds} %'
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                          '${AppLocalizations.of(context).translate('wind_speed')}'
+                              ': ${currentWeather.wind_speed} '
+                              '${AppLocalizations.of(context).translate('meter_per_sec')}'
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                          '${AppLocalizations.of(context).translate('humidity')}'
+                              ': ${currentWeather.humidity} %'
+                      ),
+                    ],
                   ),
                 ],
               ),

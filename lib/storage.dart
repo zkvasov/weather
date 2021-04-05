@@ -46,7 +46,6 @@ class Storage {
     final hourlyWeather = await _box.get(5);
     await _box.close();
     return hourlyWeather;
-
   }
 
   static Future<void> deleteDailyWeather() async{
