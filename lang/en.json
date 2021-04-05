@@ -1,0 +1,14 @@
+{
+  "home_page_name" : "Weather",
+  "notification_settings" : "Notification settings",
+  "hourly_weather" : "Hourly weather",
+  "pressure" : "pressure",
+  "clouds" : "clouds",
+  "wind_speed" : "wind speed",
+  "humidity" : "humidity",
+  "select_date_time" : "select date and time",
+  "create_notification" : "Create notification by selected date and time",
+  "cancel_all_notifications" : "Cancel all notifications",
+  "mm_hg" : "mmHg",
+  "meter_per_sec" : "m/s"
+}

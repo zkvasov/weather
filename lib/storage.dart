@@ -4,8 +4,8 @@ import 'package:weather_app/models/hourly_weather.dart';
 import 'package:weather_app/models/temperature.dart';
 import 'package:weather_app/models/weather.dart';
 import 'package:weather_app/models/day.dart';
-import 'models/daily_weather.dart';
-import 'models/hour.dart';
+import 'package:weather_app/models/daily_weather.dart';
+import 'package:weather_app/models/hour.dart';
 
 class Storage {
   static Box<dynamic> _box;
@@ -47,6 +47,18 @@ class Storage {
     await _box.close();
     return hourlyWeather;
 
+  }
+
+  static Future<void> deleteDailyWeather() async{
+    _box = await Hive.openBox('Weather');
+    await _box.delete(0);
+    await _box.close();
+  }
+
+  static Future<void> deleteHourlyWeather() async{
+    _box = await Hive.openBox('Weather');
+    await _box.delete(5);
+    await _box.close();
   }
 
   static Future<void> clear() async{

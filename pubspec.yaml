@@ -28,7 +28,6 @@ dependencies:
   json_annotation: ^3.1.0
   json_serializable: ^3.5.1
   intl: ^0.17.0
-  flutter_image_compress: ^1.0.0
   flutter_riverpod: ^0.12.1
   hooks_riverpod: ^0.12.1
   hive: ^2.0.0

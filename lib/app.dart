@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weather_app/ui/pages/splash_screan.dart';
+import 'package:weather_app/ui/pages/splash_page.dart';
 
 class App extends StatelessWidget {
   const App({Key key}) : super(key: key);
@@ -7,10 +7,11 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         brightness: Brightness.dark,
       ),
-      home: SplashScreen(),
+      home: SplashPage(),
     );
   }
 }

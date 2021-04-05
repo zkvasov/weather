@@ -6,7 +6,7 @@ extension DateTimeUtils on DateTime {
   }
 
   String getMonthDayTimeString() {
-    return DateFormat('MM-dd – kk:mm').format(this);
+    return DateFormat('dd-MM – kk:mm').format(this);
   }
 
   String getFormattedFullDateTimeString() {

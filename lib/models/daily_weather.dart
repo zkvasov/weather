@@ -1,7 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:weather_app/models/day.dart';
-import 'package:weather_app/models/temperature.dart';
 
 part 'daily_weather.g.dart';
 

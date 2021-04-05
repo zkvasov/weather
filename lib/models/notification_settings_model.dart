@@ -68,13 +68,14 @@ class NotificationSettingsModel {
 Future<void> setupNotifications() async{
   await _configureLocalTimeZone();
 
-  final NotificationAppLaunchDetails notificationAppLaunchDetails =
-  await flutterLocalNotificationsPlugin.getNotificationAppLaunchDetails();
-  /*String initialRoute = HomePage.routeName;
-  if (notificationAppLaunchDetails?.didNotificationLaunchApp ?? false) {
-    selectedNotificationPayload = notificationAppLaunchDetails!.payload;
-    initialRoute = SecondPage.routeName;
-  }*/
+  // TODO: Find out where it was used
+  // final NotificationAppLaunchDetails notificationAppLaunchDetails =
+  // await flutterLocalNotificationsPlugin.getNotificationAppLaunchDetails();
+  // String initialRoute = HomePage.routeName;
+  // if (notificationAppLaunchDetails?.didNotificationLaunchApp ?? false) {
+  //   selectedNotificationPayload = notificationAppLaunchDetails!.payload;
+  //   initialRoute = SecondPage.routeName;
+  // }
 
   const AndroidInitializationSettings initializationSettingsAndroid =
   AndroidInitializationSettings('app_icon');

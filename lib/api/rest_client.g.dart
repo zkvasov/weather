@@ -17,12 +17,22 @@ class _RestClient implements RestClient {
   String baseUrl;
 
   @override
-  Future<DailyWeather> getDailyWeather() async {
+  Future<DailyWeather> getDailyWeather(
+      {appId = ApiConstants.appId,
+      latitude = ApiConstants.lat,
+      longitude = ApiConstants.lon,
+      units = ApiConstants.units}) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'appid': appId?.toJson(),
+      r'lat': latitude?.toJson(),
+      r'lon': longitude?.toJson(),
+      r'units': units?.toJson()
+    };
+    queryParameters.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
     final _result = await _dio.request<Map<String, dynamic>>(
-        '/onecall?lat=50.431759&lon=30.517023&units=metric&exclude=current,minutely,hourly&appid=435fd89eafd6faeeb140b2b3cc23c967',
+        '/onecall?exclude=current,minutely,hourly',
         queryParameters: queryParameters,
         options: RequestOptions(
             method: 'GET',
@@ -35,12 +45,22 @@ class _RestClient implements RestClient {
   }
 
   @override
-  Future<HourlyWeather> getHourlyWeather() async {
+  Future<HourlyWeather> getHourlyWeather(
+      {appId = ApiConstants.appId,
+      latitude = ApiConstants.lat,
+      longitude = ApiConstants.lon,
+      units = ApiConstants.units}) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'appid': appId?.toJson(),
+      r'lat': latitude?.toJson(),
+      r'lon': longitude?.toJson(),
+      r'units': units?.toJson()
+    };
+    queryParameters.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
     final _result = await _dio.request<Map<String, dynamic>>(
-        '/onecall?lat=50.431759&lon=30.517023&units=metric&exclude=current,minutely,daily&appid=435fd89eafd6faeeb140b2b3cc23c967',
+        '/onecall?exclude=current,minutely,daily',
         queryParameters: queryParameters,
         options: RequestOptions(
             method: 'GET',

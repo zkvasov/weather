@@ -1,0 +1,14 @@
+{
+  "home_page_name" : "Погода",
+  "notification_settings" : "Настройки уведомления",
+  "hourly_weather" : "Почасовая погода",
+  "pressure" : "давление",
+  "clouds" : "облачность",
+  "wind_speed" : "скорость ветра",
+  "humidity" : "влажность",
+  "select_date_time" : "выберите дату и время",
+  "create_notification" : "Создать уведомление по выбранным дате и времени",
+  "cancel_all_notifications" : "Отменить все уведомления",
+  "mm_hg" : "мм рт. ст.",
+  "meter_per_sec" : "м/с"
+}
