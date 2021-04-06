@@ -1,6 +1,7 @@
 import 'dart:core';
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:weather_app/localization/app_localizations.dart';
 import 'package:weather_app/ui/pages/home_page.dart';
 
 class SplashPage extends StatefulWidget {
@@ -9,20 +10,16 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-
   @override
   void initState() {
     super.initState();
-    Timer(
-        Duration(seconds: 3),
-            () {
-              Navigator.of(context).pushReplacement(
-                MaterialPageRoute(
-                  builder: (context) => HomePage(),
-                ),
-              );
-            }
-    );
+    Timer(Duration(seconds: 3), () {
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) => HomePage(),
+        ),
+      );
+    });
   }
 
   @override
@@ -33,15 +30,14 @@ class _SplashPageState extends State<SplashPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Image.asset(
-                "assets/images/morning.png",
-                width: MediaQuery.of(context).size.width / 4
+            Image.asset("assets/images/morning.png",
+                width: MediaQuery.of(context).size.width / 4),
+            Text(
+              AppLocalizations.of(context).translate('weather'),
             ),
-            Text("Weather")
           ],
         ),
       ),
     );
   }
-
 }

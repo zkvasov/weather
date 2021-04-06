@@ -22,7 +22,7 @@ class HomePage extends HookWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          AppLocalizations.of(context).translate('home_page_name'),
+          AppLocalizations.of(context).translate('weather'),
         ),
         automaticallyImplyLeading: false,
         actions: <Widget>[
