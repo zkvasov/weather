@@ -4,8 +4,7 @@ import 'package:weather_app/ui/pages/hourly_weather_page.dart';
 import 'package:weather_app/ui/pages/notification_settings_page.dart';
 import 'package:weather_app/constants.dart';
 
-class MenuButton extends StatelessWidget{
-
+class MenuButton extends StatelessWidget {
   void _menuChoiceAction(BuildContext context, String choice) {
     if (choice == Constants.notificationSettings) {
       Navigator.of(context).push(
@@ -24,7 +23,7 @@ class MenuButton extends StatelessWidget{
   }
 
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return PopupMenuButton<String>(
       onSelected: (choice) => _menuChoiceAction(context, choice),
       itemBuilder: (BuildContext context) {

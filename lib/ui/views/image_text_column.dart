@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
-class ImageTextColumn extends StatelessWidget{
-
+class ImageTextColumn extends StatelessWidget {
   final String imageAssetPath;
   final double temp;
 
-  const ImageTextColumn({Key key, this.imageAssetPath, this.temp}) : super(key: key);
+  const ImageTextColumn(
+      {Key? key, required this.imageAssetPath, required this.temp})
+      : super(key: key);
 
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Column(
       textDirection: TextDirection.ltr,
       children: <Widget>[
@@ -19,7 +20,9 @@ class ImageTextColumn extends StatelessWidget{
         SizedBox(
           height: 15,
         ),
-        Text('$temp °C'),
+        Text(
+          '$temp °C',
+        ),
       ],
     );
   }

@@ -6,7 +6,7 @@
   "clouds" : "clouds",
   "wind_speed" : "wind speed",
   "humidity" : "humidity",
-  "select_date_time" : "select date and time",
+  "select_date_time" : "Select date and time",
   "create_notification" : "Create notification by selected date and time",
   "cancel_all_notifications" : "Cancel all notifications",
   "mm_hg" : "mmHg",

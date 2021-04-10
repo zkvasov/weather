@@ -6,9 +6,12 @@ class ShortHourDescription extends StatelessWidget {
   final String iconWeatherName;
   final double temp;
 
-  const ShortHourDescription(
-      {Key key, this.dt, this.iconWeatherName, this.temp})
-      : super(key: key);
+  const ShortHourDescription({
+    Key? key,
+    required this.dt,
+    required this.iconWeatherName,
+    required this.temp,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +25,15 @@ class ShortHourDescription extends StatelessWidget {
           style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
         ),
         Image.network(
-            "https://openweathermap.org/img/wn/$iconWeatherName@2x.png"),
+          "https://openweathermap.org/img/wn/$iconWeatherName@2x.png",
+        ),
         Text(
           '${temp.toStringAsFixed(1)}°C',
-          style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
-        )
+          style: TextStyle(
+            fontSize: 18.0,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ],
     );
   }

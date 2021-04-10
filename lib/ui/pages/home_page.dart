@@ -6,18 +6,17 @@ import 'package:weather_app/notifiers/daily_weather_notifier.dart';
 import 'package:weather_app/ui/views/full_day_description.dart';
 import 'package:weather_app/ui/views/load_button.dart';
 import 'package:weather_app/ui/views/menu_button.dart';
-import 'package:weather_app/models/daily_weather.dart';
 
 final dailyWeatherProvider = StateNotifierProvider(
   (ref) => DailyWeatherNotifier()..loadDataFromHive(),
 );
 
 class HomePage extends HookWidget {
-  const HomePage({Key key}) : super(key: key);
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final dailyWeather = useProvider(dailyWeatherProvider.state);
+    final dailyWeather = useProvider(dailyWeatherProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -30,17 +29,13 @@ class HomePage extends HookWidget {
         ],
       ),
       floatingActionButton: LoadButton(
-        onPressed: context.read(dailyWeatherProvider).loadDataFromApi,
+        onPressed: context.read(dailyWeatherProvider.notifier).loadDataFromApi,
       ),
       body: dailyWeather == null
           ? Center(
               child: CircularProgressIndicator(),
             )
-          : _buildBody(dailyWeather),
+          : FullDayDescription(dailyWeather: dailyWeather),
     );
-  }
-
-  Widget _buildBody(DailyWeather dailyWeather) {
-    return FullDayDescription(dailyWeather: dailyWeather);
   }
 }

@@ -6,38 +6,36 @@ import 'dart:developer';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:weather_app/storage.dart';
 
-class DailyWeatherNotifier extends StateNotifier<DailyWeather> {
+class DailyWeatherNotifier extends StateNotifier<DailyWeather?> {
   DailyWeatherNotifier() : super(null);
 
-  Future<void> loadDataFromHive() async{
-    final dailyWeatherFromHive = await Storage.getDailyWeather();
-    if(dailyWeatherFromHive != null){
+  Future<void> loadDataFromHive() async {
+    final dailyWeatherFromHive;
+    dailyWeatherFromHive = await Storage.getDailyWeather();
+    if (dailyWeatherFromHive != null) {
       log('from Hive:' + dailyWeatherFromHive.toJson().toString());
       state = dailyWeatherFromHive;
-    }
-    else{
+    } else {
       loadDataFromApi();
     }
   }
 
   Future<void> loadDataFromApi() async {
-    var client = GetIt.instance<RestClient>();
+    final client = GetIt.instance<RestClient>();
     var dailyWeather;
-    try{
+    try {
       final position = await determinePosition();
       log('geolocation: ' + position.toString());
       dailyWeather = await client.getDailyWeather(
-        latitude: position.latitude,
-        longitude: position.longitude
-      );
-    }catch(e){
+          latitude: position.latitude, longitude: position.longitude);
+    } catch (e) {
       dailyWeather = await client.getDailyWeather();
     }
     log('from Api:' + dailyWeather.toJson().toString());
 
     await Storage.deleteDailyWeather();
     await Storage.addDailyWeather(dailyWeather);
-    
+
     state = dailyWeather;
   }
 }

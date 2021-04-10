@@ -5,7 +5,6 @@ import 'package:weather_app/app.dart';
 import 'package:weather_app/service_locator.dart' as di;
 import 'package:weather_app/storage.dart';
 import 'package:weather_app/models/notification_settings_model.dart';
-
 import 'package:weather_app/localization/app_language.dart';
 
 Future<void> main() async {

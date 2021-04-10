@@ -6,7 +6,7 @@
   "clouds" : "облачность",
   "wind_speed" : "скорость ветра",
   "humidity" : "влажность",
-  "select_date_time" : "выберите дату и время",
+  "select_date_time" : "Выберите дату и время",
   "create_notification" : "Создать уведомление по выбранным дате и времени",
   "cancel_all_notifications" : "Отменить все уведомления",
   "mm_hg" : "мм рт. ст.",

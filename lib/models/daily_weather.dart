@@ -8,12 +8,17 @@ part 'daily_weather.g.dart';
 @JsonSerializable(explicitToJson: true)
 class DailyWeather {
   @HiveField(0)
-  String timezone;
+  final String timezone;
   @HiveField(1)
-  List<Day> daily;
+  final List<Day> daily;
 
-  DailyWeather({this.timezone});
+  DailyWeather({
+    required this.timezone,
+    required this.daily,
+  });
 
-  factory DailyWeather.fromJson(Map<String, dynamic> json) => _$DailyWeatherFromJson(json);
+  factory DailyWeather.fromJson(Map<String, dynamic> json) =>
+      _$DailyWeatherFromJson(json);
+
   Map<String, dynamic> toJson() => _$DailyWeatherToJson(this);
 }

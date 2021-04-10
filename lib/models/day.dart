@@ -9,27 +9,38 @@ part 'day.g.dart';
 @JsonSerializable(explicitToJson: true)
 class Day {
   @HiveField(0)
-  int dt;
+  final int dt;
   @HiveField(1)
-  int sunrise;
+  final int sunrise;
   @HiveField(2)
-  int sunset;
+  final int sunset;
   @HiveField(3)
-  Temperature temp;
+  final Temperature temp;
   @HiveField(4)
-  int pressure;
+  final int pressure;
   @HiveField(5)
-  int humidity;
+  final int humidity;
   @HiveField(6)
-  double wind_speed;
+  @JsonKey(name: 'wind_speed')
+  final double windSpeed;
   @HiveField(7)
-  List<Weather> weather;
+  final List<Weather> weather;
   @HiveField(8)
-  int clouds;
+  final int clouds;
 
-  Day({this.dt, this.sunrise, this.sunset, this.pressure, this.humidity,
-  this.wind_speed, this.clouds});
+  Day({
+    required this.dt,
+    required this.sunrise,
+    required this.sunset,
+    required this.temp,
+    required this.pressure,
+    required this.humidity,
+    required this.windSpeed,
+    required this.weather,
+    required this.clouds,
+  });
 
   factory Day.fromJson(Map<String, dynamic> json) => _$DayFromJson(json);
+
   Map<String, dynamic> toJson() => _$DayToJson(this);
 }

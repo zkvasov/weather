@@ -1,16 +1,14 @@
-
-
 import 'package:flutter/material.dart';
 
 class PaddedElevatedButton extends StatelessWidget {
-  const PaddedElevatedButton({
-    this.buttonText,
-    this.onPressed,
-    Key key,
-  }) : super(key: key);
-
   final String buttonText;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
+
+  const PaddedElevatedButton({
+    required this.buttonText,
+    required this.onPressed,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

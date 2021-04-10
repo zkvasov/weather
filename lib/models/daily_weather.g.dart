@@ -18,7 +18,8 @@ class DailyWeatherAdapter extends TypeAdapter<DailyWeather> {
     };
     return DailyWeather(
       timezone: fields[0] as String,
-    )..daily = (fields[1] as List)?.cast<Day>();
+      daily: (fields[1] as List).cast<Day>(),
+    );
   }
 
   @override
@@ -49,13 +50,14 @@ class DailyWeatherAdapter extends TypeAdapter<DailyWeather> {
 DailyWeather _$DailyWeatherFromJson(Map<String, dynamic> json) {
   return DailyWeather(
     timezone: json['timezone'] as String,
-  )..daily = (json['daily'] as List)
-      ?.map((e) => e == null ? null : Day.fromJson(e as Map<String, dynamic>))
-      ?.toList();
+    daily: (json['daily'] as List<dynamic>)
+        .map((e) => Day.fromJson(e as Map<String, dynamic>))
+        .toList(),
+  );
 }
 
 Map<String, dynamic> _$DailyWeatherToJson(DailyWeather instance) =>
     <String, dynamic>{
       'timezone': instance.timezone,
-      'daily': instance.daily?.map((e) => e?.toJson())?.toList(),
+      'daily': instance.daily.map((e) => e.toJson()).toList(),
     };

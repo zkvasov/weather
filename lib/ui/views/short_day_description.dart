@@ -7,10 +7,13 @@ class ShortDayDescription extends StatelessWidget {
   final double minTemp;
   final double maxTemp;
 
-  const ShortDayDescription(
-      {Key key, this.dt, this.iconName, this.minTemp, this.maxTemp})
-      : super(key: key);
-
+  const ShortDayDescription({
+    Key? key,
+    required this.dt,
+    required this.iconName,
+    required this.minTemp,
+    required this.maxTemp,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +28,9 @@ class ShortDayDescription extends StatelessWidget {
         ),
         Image.network("https://openweathermap.org/img/wn/$iconName@2x.png"),
         Text(
-          '${minTemp.toStringAsFixed(1)}'
-          '...${maxTemp.toStringAsFixed(1)}°C',
+          '${minTemp.toStringAsFixed(1)}...${maxTemp.toStringAsFixed(1)}°C',
           style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
-        )
+        ),
       ],
     );
   }

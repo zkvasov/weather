@@ -1,7 +1,7 @@
 import 'package:intl/intl.dart';
 
 extension DateTimeUtils on DateTime {
-  String getMonthDayString(){
+  String getMonthDayString() {
     return DateFormat('dd.MM').format(this);
   }
 

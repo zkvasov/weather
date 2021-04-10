@@ -6,31 +6,29 @@ import 'package:weather_app/geolocation_service.dart';
 import 'package:weather_app/models/hourly_weather.dart';
 import 'package:weather_app/storage.dart';
 
-class HourlyWeatherNotifier extends StateNotifier<HourlyWeather> {
+class HourlyWeatherNotifier extends StateNotifier<HourlyWeather?> {
   HourlyWeatherNotifier() : super(null);
 
-  Future<void> loadDataFromHive() async{
-    final hourlyWeatherFromHive = await Storage.getHourlyWeather();
-    if(hourlyWeatherFromHive != null){
+  Future<void> loadDataFromHive() async {
+    final hourlyWeatherFromHive;
+    hourlyWeatherFromHive = await Storage.getHourlyWeather();
+    if (hourlyWeatherFromHive != null) {
       log('from Hive:' + hourlyWeatherFromHive.toJson().toString());
       state = hourlyWeatherFromHive;
-    }
-    else{
+    } else {
       loadDataFromApi();
     }
   }
 
   Future<void> loadDataFromApi() async {
-    var client = GetIt.instance<RestClient>();
+    final client = GetIt.instance<RestClient>();
     var hourlyWeather;
-    try{
+    try {
       final position = await determinePosition();
-      log('geolocation: ' + position.toString());
+      log('Geolocation: ' + position.toString());
       hourlyWeather = await client.getHourlyWeather(
-        latitude: position.latitude,
-        longitude: position.longitude
-      );
-    }catch(e){
+          latitude: position.latitude, longitude: position.longitude);
+    } catch (e) {
       hourlyWeather = await client.getHourlyWeather();
     }
 

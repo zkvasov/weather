@@ -18,8 +18,7 @@ Future<Position> determinePosition() async {
     }
 
     if (permission == LocationPermission.denied) {
-      return Future.error(
-          'Location permissions are denied');
+      return Future.error('Location permissions are denied');
     }
   }
 

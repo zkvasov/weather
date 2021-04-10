@@ -7,14 +7,20 @@ part 'weather.g.dart';
 @JsonSerializable()
 class Weather {
   @HiveField(0)
-  String main;
+  final String main;
   @HiveField(1)
-  String description;
+  final String description;
   @HiveField(2)
-  String icon;
+  final String icon;
 
-  Weather({this.main, this.description, this.icon});
+  Weather({
+    required this.main,
+    required this.description,
+    required this.icon,
+  });
 
-  factory Weather.fromJson(Map<String, dynamic> json) => _$WeatherFromJson(json);
+  factory Weather.fromJson(Map<String, dynamic> json) =>
+      _$WeatherFromJson(json);
+
   Map<String, dynamic> toJson() => _$WeatherToJson(this);
 }

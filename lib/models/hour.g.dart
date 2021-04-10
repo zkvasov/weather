@@ -21,9 +21,10 @@ class HourAdapter extends TypeAdapter<Hour> {
       temp: fields[1] as double,
       pressure: fields[2] as int,
       humidity: fields[3] as int,
-      wind_speed: fields[4] as double,
+      windSpeed: fields[4] as double,
+      weather: (fields[5] as List).cast<Weather>(),
       clouds: fields[6] as int,
-    )..weather = (fields[5] as List)?.cast<Weather>();
+    );
   }
 
   @override
@@ -39,7 +40,7 @@ class HourAdapter extends TypeAdapter<Hour> {
       ..writeByte(3)
       ..write(obj.humidity)
       ..writeByte(4)
-      ..write(obj.wind_speed)
+      ..write(obj.windSpeed)
       ..writeByte(5)
       ..write(obj.weather)
       ..writeByte(6)
@@ -64,15 +65,15 @@ class HourAdapter extends TypeAdapter<Hour> {
 Hour _$HourFromJson(Map<String, dynamic> json) {
   return Hour(
     dt: json['dt'] as int,
-    temp: (json['temp'] as num)?.toDouble(),
+    temp: (json['temp'] as num).toDouble(),
     pressure: json['pressure'] as int,
     humidity: json['humidity'] as int,
-    wind_speed: (json['wind_speed'] as num)?.toDouble(),
+    windSpeed: (json['wind_speed'] as num).toDouble(),
+    weather: (json['weather'] as List<dynamic>)
+        .map((e) => Weather.fromJson(e as Map<String, dynamic>))
+        .toList(),
     clouds: json['clouds'] as int,
-  )..weather = (json['weather'] as List)
-      ?.map(
-          (e) => e == null ? null : Weather.fromJson(e as Map<String, dynamic>))
-      ?.toList();
+  );
 }
 
 Map<String, dynamic> _$HourToJson(Hour instance) => <String, dynamic>{
@@ -80,7 +81,7 @@ Map<String, dynamic> _$HourToJson(Hour instance) => <String, dynamic>{
       'temp': instance.temp,
       'pressure': instance.pressure,
       'humidity': instance.humidity,
-      'wind_speed': instance.wind_speed,
-      'weather': instance.weather?.map((e) => e?.toJson())?.toList(),
+      'wind_speed': instance.windSpeed,
+      'weather': instance.weather.map((e) => e.toJson()).toList(),
       'clouds': instance.clouds,
     };

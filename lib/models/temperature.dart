@@ -7,21 +7,29 @@ part 'temperature.g.dart';
 @JsonSerializable()
 class Temperature {
   @HiveField(0)
-  double day;
+  final double day;
   @HiveField(1)
-  double min;
+  final double min;
   @HiveField(2)
-  double max;
+  final double max;
   @HiveField(3)
-  double night;
+  final double night;
   @HiveField(4)
-  double eve;
+  final double eve;
   @HiveField(5)
-  double morn;
+  final double morn;
 
+  Temperature({
+    required this.day,
+    required this.min,
+    required this.max,
+    required this.night,
+    required this.eve,
+    required this.morn,
+  });
 
-  Temperature({this.day, this.min, this.max, this.night, this.eve, this.morn});
+  factory Temperature.fromJson(Map<String, dynamic> json) =>
+      _$TemperatureFromJson(json);
 
-  factory Temperature.fromJson(Map<String, dynamic> json) => _$TemperatureFromJson(json);
   Map<String, dynamic> toJson() => _$TemperatureToJson(this);
 }

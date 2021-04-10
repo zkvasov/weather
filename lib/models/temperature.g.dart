@@ -61,12 +61,12 @@ class TemperatureAdapter extends TypeAdapter<Temperature> {
 
 Temperature _$TemperatureFromJson(Map<String, dynamic> json) {
   return Temperature(
-    day: (json['day'] as num)?.toDouble(),
-    min: (json['min'] as num)?.toDouble(),
-    max: (json['max'] as num)?.toDouble(),
-    night: (json['night'] as num)?.toDouble(),
-    eve: (json['eve'] as num)?.toDouble(),
-    morn: (json['morn'] as num)?.toDouble(),
+    day: (json['day'] as num).toDouble(),
+    min: (json['min'] as num).toDouble(),
+    max: (json['max'] as num).toDouble(),
+    night: (json['night'] as num).toDouble(),
+    eve: (json['eve'] as num).toDouble(),
+    morn: (json['morn'] as num).toDouble(),
   );
 }
 

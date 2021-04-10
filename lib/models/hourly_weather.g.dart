@@ -18,7 +18,8 @@ class HourlyWeatherAdapter extends TypeAdapter<HourlyWeather> {
     };
     return HourlyWeather(
       timezone: fields[0] as String,
-    )..hourly = (fields[1] as List)?.cast<Hour>();
+      hourly: (fields[1] as List).cast<Hour>(),
+    );
   }
 
   @override
@@ -49,13 +50,14 @@ class HourlyWeatherAdapter extends TypeAdapter<HourlyWeather> {
 HourlyWeather _$HourlyWeatherFromJson(Map<String, dynamic> json) {
   return HourlyWeather(
     timezone: json['timezone'] as String,
-  )..hourly = (json['hourly'] as List)
-      ?.map((e) => e == null ? null : Hour.fromJson(e as Map<String, dynamic>))
-      ?.toList();
+    hourly: (json['hourly'] as List<dynamic>)
+        .map((e) => Hour.fromJson(e as Map<String, dynamic>))
+        .toList(),
+  );
 }
 
 Map<String, dynamic> _$HourlyWeatherToJson(HourlyWeather instance) =>
     <String, dynamic>{
       'timezone': instance.timezone,
-      'hourly': instance.hourly?.map((e) => e?.toJson())?.toList(),
+      'hourly': instance.hourly.map((e) => e.toJson()).toList(),
     };

@@ -8,12 +8,13 @@ import 'package:weather_app/ui/views/weather_temp_row.dart';
 class FullDayDescription extends StatelessWidget {
   final DailyWeather dailyWeather;
 
-  const FullDayDescription({Key key, this.dailyWeather}) : super(key: key);
+  const FullDayDescription({Key? key, required this.dailyWeather})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: dailyWeather?.daily?.length ?? 0,
+      itemCount: dailyWeather.daily.length,
       itemBuilder: (context, index) {
         final currentWeather = dailyWeather.daily[index];
         return ExpansionTile(
@@ -60,31 +61,32 @@ class FullDayDescription extends StatelessWidget {
                         height: 10,
                       ),
                       Text(
-                          '${AppLocalizations.of(context).translate('pressure')}'
-                              ': ${currentWeather.pressure}'
-                              ' ${AppLocalizations.of(context).translate('mm_hg')}'
+                        '${AppLocalizations.of(context).translate('pressure')}:'
+                        ' ${currentWeather.pressure} ${AppLocalizations
+                            .of(context).translate('mm_hg')}',
                       ),
                       SizedBox(
                         height: 10,
                       ),
                       Text(
-                          '${AppLocalizations.of(context).translate('clouds')}'
-                              ': ${currentWeather.clouds} %'
+                        '${AppLocalizations.of(context)
+                            .translate('clouds')}: ${currentWeather.clouds} %',
                       ),
                       SizedBox(
                         height: 10,
                       ),
                       Text(
-                          '${AppLocalizations.of(context).translate('wind_speed')}'
-                              ': ${currentWeather.wind_speed} '
-                              '${AppLocalizations.of(context).translate('meter_per_sec')}'
+                        '${AppLocalizations.of(context)
+                            .translate('wind_speed')}: '
+                        '${currentWeather.windSpeed} ${AppLocalizations
+                            .of(context).translate('meter_per_sec')}',
                       ),
                       SizedBox(
                         height: 10,
                       ),
                       Text(
-                          '${AppLocalizations.of(context).translate('humidity')}'
-                              ': ${currentWeather.humidity} %'
+                        '${AppLocalizations.of(context).translate('humidity')}'
+                        ': ${currentWeather.humidity} %',
                       ),
                     ],
                   ),
